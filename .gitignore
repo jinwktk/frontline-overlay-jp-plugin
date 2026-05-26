@@ -1,0 +1,27 @@
+# Build output
+bin/
+obj/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# IDE
+.vs/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# Local files
+*.user
+*.suo
+*.local
+
+# Dalamud/package artifacts
+dist/
+*.zip
+*.nupkg
+
+# OMX/local agent state
+.omx/
