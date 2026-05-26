@@ -11,9 +11,7 @@ public sealed class Configuration : IPluginConfiguration
 
     public int Version { get; set; } = 1;
 
-    public bool EnableBridge { get; set; } = true;
-
-    public int BridgePort { get; set; } = 47774;
+    public bool OpenMainWindowOnStartup { get; set; } = true;
 
     public void Initialize(IDalamudPluginInterface pluginInterface)
     {

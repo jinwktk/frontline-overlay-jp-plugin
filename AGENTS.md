@@ -43,3 +43,5 @@
 - Dalamud.NET.Sdk は既定の XIVLauncher dev ディレクトリまたは `DALAMUD_HOME` を必要とするため、GitHub Actions は Core テストを常時実行し、プラグインビルドは `DALAMUD_HOME` がある環境だけで実行する設定にした。
 - `HttpListener` は Windows の URL 予約に引っかかる可能性があるため、ブリッジをループバック限定の `TcpListener` ベース WebSocket 実装へ変更した。
 - ユーザー要望により方針を変更し、既存 Web 版やローカルブリッジを使わず Dalamud 上だけで完結させる。まず Core テストを戦況集計モデルへ差し替える。
+- ブリッジ、OverlayPlugin 互換イベント、JSON シリアライズを削除し、Dalamud の ImGui 戦況ウィンドウだけで表示する構成へ変更する。
+- ビルド成果物は Release ビルド後に `src/FrontlineOverlay.Plugin/bin/Release/FrontlineOverlay.Plugin/latest.zip` に生成される想定。

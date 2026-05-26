@@ -19,5 +19,9 @@ public sealed record BattleSnapshot
 
     public string KillDeathText => $"{Kills} / {Deaths}";
 
+    public string KillDeathRatioText => Deaths == 0
+        ? Kills.ToString("N2", CultureInfo.InvariantCulture)
+        : ((double)Kills / Deaths).ToString("N2", CultureInfo.InvariantCulture);
+
     public string DamageDealtText => DamageDealt.ToString("N0", CultureInfo.InvariantCulture);
 }

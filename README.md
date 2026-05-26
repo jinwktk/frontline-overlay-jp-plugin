@@ -33,3 +33,7 @@ dotnet build src/FrontlineOverlay.Plugin/FrontlineOverlay.Plugin.csproj
 ## 注意
 
 Dalamud プラグインとして動作させるため、FFXIV クライアント側では Dalamud/XIVLauncher が必要です。ACT、OverlayPlugin、既存 Web 版は不要です。
+
+## ビルド成果物
+
+`dotnet build src/FrontlineOverlay.Plugin/FrontlineOverlay.Plugin.csproj --configuration Release` 後、DalamudPackager が `src/FrontlineOverlay.Plugin/bin/Release/FrontlineOverlay.Plugin/latest.zip` を生成します。

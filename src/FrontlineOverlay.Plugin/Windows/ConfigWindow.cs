@@ -25,24 +25,11 @@ public sealed class ConfigWindow : Window, IDisposable
 
     public override void Draw()
     {
-        var enableBridge = plugin.Configuration.EnableBridge;
-        if (ImGui.Checkbox("ローカルブリッジを有効にする", ref enableBridge))
+        var openMainWindowOnStartup = plugin.Configuration.OpenMainWindowOnStartup;
+        if (ImGui.Checkbox("起動時に戦況を開く", ref openMainWindowOnStartup))
         {
-            plugin.Configuration.EnableBridge = enableBridge;
+            plugin.Configuration.OpenMainWindowOnStartup = openMainWindowOnStartup;
             plugin.Configuration.Save();
-            _ = plugin.RestartBridgeAsync();
-        }
-
-        var port = plugin.Configuration.BridgePort;
-        if (ImGui.InputInt("ブリッジポート", ref port))
-        {
-            plugin.Configuration.BridgePort = Math.Clamp(port, 1024, 65535);
-            plugin.Configuration.Save();
-        }
-
-        if (ImGui.Button("ブリッジを再起動"))
-        {
-            _ = plugin.RestartBridgeAsync();
         }
     }
 }

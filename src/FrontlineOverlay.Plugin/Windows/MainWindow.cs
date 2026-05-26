@@ -25,22 +25,27 @@ public sealed class MainWindow : Window, IDisposable
 
     public override void Draw()
     {
-        ImGui.TextUnformatted("Frontline Overlay JP Plugin");
+        var snapshot = plugin.CurrentBattleSnapshot;
+
+        ImGui.TextUnformatted("戦況");
         ImGui.Separator();
 
-        ImGui.TextUnformatted($"ブリッジ: {(plugin.IsBridgeRunning ? "起動中" : "停止中")}");
-        ImGui.TextUnformatted($"URL: {plugin.BridgeEndpoint?.ToString() ?? "-"}");
+        ImGui.TextUnformatted($"K/D: {snapshot.KillDeathText}");
+        ImGui.TextUnformatted($"K/D比: {snapshot.KillDeathRatioText}");
+        ImGui.TextUnformatted($"与ダメージ: {snapshot.DamageDealtText}");
 
-        if (ImGui.Button("設定"))
+        ImGui.Spacing();
+
+        if (ImGui.Button("リセット"))
         {
-            plugin.ToggleConfigUi();
+            plugin.ResetCurrentBattle();
         }
 
         ImGui.SameLine();
 
-        if (ImGui.Button("再起動"))
+        if (ImGui.Button("設定"))
         {
-            _ = plugin.RestartBridgeAsync();
+            plugin.ToggleConfigUi();
         }
     }
 }

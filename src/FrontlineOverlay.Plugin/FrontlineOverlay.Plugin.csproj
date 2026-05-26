@@ -12,7 +12,7 @@
     <Name>Frontline Overlay JP Plugin</Name>
     <InternalName>FrontlineOverlayJPPlugin</InternalName>
     <Punchline>ACTなしでフロントライン向け情報を扱うための日本語プラグイン。</Punchline>
-    <Description>frontline-overlay-jp の Dalamud プラグイン版です。既存Web版と互換性のあるイベントをローカルブリッジへ出す構成で開発します。</Description>
+    <Description>ACT、OverlayPlugin、既存Web版を使わず、Dalamud 上だけでフロントライン向け戦況を表示する日本語プラグインです。</Description>
     <RepoUrl>https://github.com/jinwktk/frontline-overlay-jp-plugin</RepoUrl>
     <Tags>frontline;pvp;japanese;overlay</Tags>
     <CategoryTags>utility</CategoryTags>
