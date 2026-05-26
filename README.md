@@ -33,7 +33,7 @@ dotnet build src/FrontlineOverlay.Plugin/FrontlineOverlay.Plugin.csproj
 
 ## ローカルブリッジ
 
-プラグインは既定で `http://127.0.0.1:47774/frontline-overlay-jp/` に WebSocket 接続を受け付けます。現段階ではプラグイン起動状態とイベント契約の土台を用意しており、実戦ログ・K/D・与ダメージの取得は次の実装段階で Dalamud から取得可能なイベントを確認しながら追加します。
+プラグインは既定で `ws://127.0.0.1:47774/frontline-overlay-jp/` に WebSocket 接続を受け付けます。URL予約を避けるため、ブリッジは `HttpListener` ではなくループバック限定の `TcpListener` で動かします。現段階ではプラグイン起動状態とイベント契約の土台を用意しており、実戦ログ・K/D・与ダメージの取得は次の実装段階で Dalamud から取得可能なイベントを確認しながら追加します。
 
 ## 注意
 

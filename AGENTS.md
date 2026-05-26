@@ -38,6 +38,7 @@
 - TDD の最初の段階として、OverlayPlugin 互換イベントと戦況スナップショットのテストを先に追加する。
 - Core 実装として `ChangeZone` / `ChangePrimaryPlayer` / `LogLine` 互換 JSON と、現在戦況表示向けの `BattleSnapshot` を追加した。
 - Dalamud プラグイン本体を追加し、`/flopjp` コマンド、設定ウィンドウ、メインウィンドウ、ローカル WebSocket ブリッジを作成した。
-- 初期ブリッジ URL は `http://127.0.0.1:47774/frontline-overlay-jp/`。実戦ログ・K/D・与ダメージ取得は Dalamud 上で取得可能なイベントを確認してから追加する。
+- 初期ブリッジ URL は `ws://127.0.0.1:47774/frontline-overlay-jp/`。実戦ログ・K/D・与ダメージ取得は Dalamud 上で取得可能なイベントを確認してから追加する。
 - DalamudPackager は `Authors` ではなく `Author` プロパティを要求したため、csproj のマニフェスト項目を修正した。
 - Dalamud.NET.Sdk は既定の XIVLauncher dev ディレクトリまたは `DALAMUD_HOME` を必要とするため、GitHub Actions は Core テストを常時実行し、プラグインビルドは `DALAMUD_HOME` がある環境だけで実行する設定にした。
+- `HttpListener` は Windows の URL 予約に引っかかる可能性があるため、ブリッジをループバック限定の `TcpListener` ベース WebSocket 実装へ変更した。
