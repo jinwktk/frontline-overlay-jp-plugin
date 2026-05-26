@@ -3,7 +3,7 @@
 ## 会話・運用ルール
 
 - 常に日本語で会話する。
-- このリポジトリは `frontline-overlay-jp` の既存 Web 版を壊さず、別管理の Dalamud プラグイン版として扱う。
+- このリポジトリは既存 Web 版を使わず、Dalamud 上だけで完結するプラグイン版として扱う。
 - 変更があったら README.md と AGENTS.md を先に更新してからコミットする。
 - サブPCでも追跡できるよう、意味のある区切りでコミット・プッシュする。
 - 原則として TDD で進め、期待する入出力のテストを先に書く。
@@ -11,15 +11,15 @@
 
 ## 目的
 
-- ACT / OverlayPlugin を使わず、Dalamud プラグインとしてフロントライン用オーバーレイ情報を扱う。
-- 既存の `frontline-overlay-jp` と互換性のあるイベント契約を Core 層に置き、プラグイン本体から同じデータを出せるようにする。
+- ACT / OverlayPlugin / 既存 Web UI を使わず、Dalamud プラグインとしてフロントライン用情報を扱う。
+- 戦況表示に必要な K/D・与ダメージは Core の戦況モデルで集計し、Dalamud の ImGui ウィンドウに表示する。
 
 ## フォルダ構成
 
 - `src/FrontlineOverlay.Plugin.Core/`
-  - Dalamud に依存しないイベントモデル、戦況スナップショット、JSON 変換処理。
+  - Dalamud に依存しない戦況スナップショットと集計処理。
 - `src/FrontlineOverlay.Plugin/`
-  - Dalamud プラグイン本体。`/flopjp` コマンド、ImGui 画面、ローカル WebSocket ブリッジを持つ。
+  - Dalamud プラグイン本体。`/flopjp` コマンド、ImGui 画面、設定画面を持つ。
 - `tests/FrontlineOverlay.Plugin.Tests/`
   - Core 層の回帰テスト。
 - `.github/workflows/build.yml`
@@ -42,3 +42,4 @@
 - DalamudPackager は `Authors` ではなく `Author` プロパティを要求したため、csproj のマニフェスト項目を修正した。
 - Dalamud.NET.Sdk は既定の XIVLauncher dev ディレクトリまたは `DALAMUD_HOME` を必要とするため、GitHub Actions は Core テストを常時実行し、プラグインビルドは `DALAMUD_HOME` がある環境だけで実行する設定にした。
 - `HttpListener` は Windows の URL 予約に引っかかる可能性があるため、ブリッジをループバック限定の `TcpListener` ベース WebSocket 実装へ変更した。
+- ユーザー要望により方針を変更し、既存 Web 版やローカルブリッジを使わず Dalamud 上だけで完結させる。まず Core テストを戦況集計モデルへ差し替える。
