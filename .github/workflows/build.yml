@@ -1,0 +1,21 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.100-rc.2.25502.107
+      - name: Restore
+        run: dotnet restore tests/FrontlineOverlay.Plugin.Tests/FrontlineOverlay.Plugin.Tests.csproj
+      - name: Test
+        run: dotnet test tests/FrontlineOverlay.Plugin.Tests/FrontlineOverlay.Plugin.Tests.csproj --no-restore --configuration Release
+      - name: Build plugin when Dalamud dev files are available
+        if: ${{ env.DALAMUD_HOME != '' }}
+        run: dotnet build src/FrontlineOverlay.Plugin/FrontlineOverlay.Plugin.csproj --no-restore --configuration Release

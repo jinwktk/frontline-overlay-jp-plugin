@@ -1,0 +1,26 @@
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <Author>jinwktk</Author>
+    <Name>Frontline Overlay JP Plugin</Name>
+    <InternalName>FrontlineOverlayJPPlugin</InternalName>
+    <Punchline>ACTなしでフロントライン向け情報を扱うための日本語プラグイン。</Punchline>
+    <Description>frontline-overlay-jp の Dalamud プラグイン版です。既存Web版と互換性のあるイベントをローカルブリッジへ出す構成で開発します。</Description>
+    <RepoUrl>https://github.com/jinwktk/frontline-overlay-jp-plugin</RepoUrl>
+    <Tags>frontline;pvp;japanese;overlay</Tags>
+    <CategoryTags>utility</CategoryTags>
+    <DalamudApiLevel>15</DalamudApiLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FrontlineOverlay.Plugin.Core\FrontlineOverlay.Plugin.Core.csproj" />
+  </ItemGroup>
+
+</Project>
